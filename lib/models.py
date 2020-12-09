@@ -1,10 +1,13 @@
 from . import graph
 
-import tensorflow as tf
+# import tensorflow as tf
 import sklearn
 import scipy.sparse
 import numpy as np
 import os, time, collections, shutil
+
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior() 
 
 
 #NFEATURES = 28**2
