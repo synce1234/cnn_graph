@@ -751,6 +751,7 @@ class cgcnn(base_model):
         super().__init__()
         
         # Verify the consistency w.r.t. the number of layers.
+        print(F)
         assert len(L) >= len(F) == len(K) == len(p)
         assert np.all(np.array(p) >= 1)
         p_log2 = np.where(np.array(p) > 1, np.log2(p), 0)
