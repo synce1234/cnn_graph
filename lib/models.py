@@ -954,7 +954,7 @@ class cgcnn(base_model):
 
     def _inference(self, x, dropout):
         # Graph convolutional layers.
-        x = tf.expand_dims(x, 2)  # N x M x F=1
+        # x = tf.expand_dims(x, 2)  # N x M x F=1
         for i in range(len(self.p)):
             with tf.variable_scope('conv{}'.format(i+1)):
                 with tf.name_scope('filter'):

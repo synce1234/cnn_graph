@@ -224,7 +224,7 @@ def perm_data(x, indices):
     if indices is None:
         return x
 
-    N, M = x.shape
+    N, M, _ = x.shape
     Mnew = len(indices)
     assert Mnew >= M
     xnew = np.empty((N, Mnew))
