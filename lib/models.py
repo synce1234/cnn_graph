@@ -33,7 +33,7 @@ class base_model(object):
             end = begin + self.batch_size
             end = min([end, size])
             
-            batch_data = np.zeros((self.batch_size, data.shape[1:]))
+            batch_data = np.zeros((self.batch_size, data.shape[1], data.shape[2]))
             tmp_data = data[begin:end,:]
             if type(tmp_data) is not np.ndarray:
                 tmp_data = tmp_data.toarray()  # convert sparse matrices
