@@ -747,7 +747,7 @@ class cgcnn(base_model):
     def __init__(self, L, F, K, p, M, filter='chebyshev5', brelu='b1relu', pool='mpool1',
                 num_epochs=20, learning_rate=0.1, decay_rate=0.95, decay_steps=None, momentum=0.9,
                 regularization=0, dropout=0, batch_size=100, eval_frequency=200,
-                dir_name=''):
+                dir_name='', init_feat=1):
         super().__init__()
         
         # Verify the consistency w.r.t. the number of layers.
@@ -759,7 +759,7 @@ class cgcnn(base_model):
         assert len(L) >= 1 + np.sum(p_log2)  # Enough coarsening levels for pool sizes.
         
         # Keep the useful Laplacians only. May be zero.
-        M_0 = L[0].shape[0]
+        M_0 = (L[0].shape[0], init_feat)
         j = 0
         self.L = []
         for pp in p:
