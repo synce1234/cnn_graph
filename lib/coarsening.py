@@ -224,10 +224,10 @@ def perm_data(x, indices):
     if indices is None:
         return x
 
-    N, M, _ = x.shape
+    N, M, k = x.shape
     Mnew = len(indices)
     assert Mnew >= M
-    xnew = np.empty((N, Mnew))
+    xnew = np.empty((N, Mnew, k))
     for i,j in enumerate(indices):
         # Existing vertex, i.e. real data.
         if j < M:
@@ -236,7 +236,7 @@ def perm_data(x, indices):
         # They will stay 0 so that max pooling chooses the singelton.
         # Or -infty ?
         else:
-            xnew[:,i] = np.zeros(N)
+            xnew[:,i] = np.zeros((N, k))
     return xnew
 
 def perm_adjacency(A, indices):
