@@ -156,7 +156,7 @@ class base_model(object):
 
             # Inputs.
             with tf.name_scope('inputs'):
-                self.ph_data = tf.placeholder(tf.float32, (self.batch_size, M_0), 'data')
+                self.ph_data = tf.placeholder(tf.float32, (self.batch_size, M_0[0], M_0[1]), 'data')
                 self.ph_labels = tf.placeholder(tf.int32, (self.batch_size), 'labels')
                 self.ph_dropout = tf.placeholder(tf.float32, (), 'dropout')
 
