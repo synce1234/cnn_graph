@@ -218,14 +218,14 @@ class base_model(object):
             
             # Summaries for TensorBoard.
             tf.summary.scalar('loss/cross_entropy', cross_entropy + 1e-8)
-            tf.summary.scalar('loss/regularization', regularization)
-            tf.summary.scalar('loss/total', loss)
+            tf.summary.scalar('loss/regularization', regularization + 1e-8)
+            tf.summary.scalar('loss/total', loss + 1e-8)
             with tf.name_scope('averages'):
                 averages = tf.train.ExponentialMovingAverage(0.9)
                 op_averages = averages.apply([cross_entropy, regularization, loss])
-                tf.summary.scalar('loss/avg/cross_entropy', averages.average(cross_entropy))
-                tf.summary.scalar('loss/avg/regularization', averages.average(regularization))
-                tf.summary.scalar('loss/avg/total', averages.average(loss))
+                tf.summary.scalar('loss/avg/cross_entropy', averages.average(cross_entropy) + 1e-8)
+                tf.summary.scalar('loss/avg/regularization', averages.average(regularization)+ 1e-8)
+                tf.summary.scalar('loss/avg/total', averages.average(loss)+ 1e-8)
                 with tf.control_dependencies([op_averages]):
                     loss_average = tf.identity(averages.average(loss), name='control')
             return loss, loss_average
