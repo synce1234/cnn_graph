@@ -217,7 +217,7 @@ class base_model(object):
             loss = cross_entropy + regularization
             
             # Summaries for TensorBoard.
-            tf.summary.scalar('loss/cross_entropy', cross_entropy)
+            tf.summary.scalar('loss/cross_entropy', cross_entropy + 1e-8)
             tf.summary.scalar('loss/regularization', regularization)
             tf.summary.scalar('loss/total', loss)
             with tf.name_scope('averages'):
